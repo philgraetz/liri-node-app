@@ -1,5 +1,8 @@
 const OUTPUT_FILE = "log.txt";
 const DEFAULT_INPUT_FILE = "random.txt";
+const DEFAULT_SONG = "The Sign";
+const DEFAULT_SCREEN_NAME = "plato_philo";
+const DEFAULT_MOVIE = "Mr. Nobody";
 const fs = require('fs');
 
 // This is so I can test without calling API
@@ -48,7 +51,7 @@ function LiriBot() {
   this.getTweets = function(screenName) {
     // Get last 20 tweets, along with when they were created
     if (screenName === undefined) 
-        screenName = 'plato_philo';
+        screenName = DEFAULT_SCREEN_NAME;
     screenName = screenName.replace(/["']/g, "");
 
     let Twitter = require('twitter');
@@ -102,7 +105,7 @@ function LiriBot() {
     // Default song is 'The Sign' by Ace of Base (I have no idea why)
     //
     if (song === undefined)
-      song = 'The Sign';
+      song = DEFAULT_SONG;
     song = song.replace(/["']/g, "");
 
     if (TEST_WO_API) {
@@ -217,9 +220,8 @@ function LiriBot() {
     //  * Language of the movie.
     //  * Plot of the movie.
     //  * Actors in the movie.
-    // Default movi is 'Mr. Nobody' (Ok, that makes sense)
     if (movie === undefined)
-      movie = 'Mr. Nobody';
+      movie = DEFAULT_MOVIE;
     movie = movie.replace(/["']/g, "");
 
     if (TEST_WO_API) {

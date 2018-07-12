@@ -1,3 +1,3 @@
-spotify-this-song, "I Want it That Way"
+spotify-this-song, "Crazy Train"
 movie-this,"The Bridge on the River Kwai"
 my-tweets, "realDonaldTrump"
