@@ -1,6 +1,17 @@
 # liri-node-app
 LIRI - Language Interpreter and Recognition Interface
 
+## Dependencies
+- dotenv
+- twitter
+- moment
+- node-spotify-api
+- request
+
+Install node packages by running:
+```
+npm install
+```
 ## USAGE
 ```
 USAGE: node liri <command>

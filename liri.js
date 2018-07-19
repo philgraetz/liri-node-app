@@ -257,25 +257,30 @@ function LiriBot() {
       });
       return;
     }
+    // console.log(data);
+    let output = "";
+    if (data.Error) {
+        output = data.Error;
+    } else {
+      let imdbRating = "";
+      let rtRating = "";
+      for (let i = 0; i < data.Ratings.length; i++) {
+        if (data.Ratings[i].Source === 'Internet Movie Database')
+          imdbRating = data.Ratings[i].Value;
+        if (data.Ratings[i].Source === 'Rotten Tomatoes')
+          rtRating = data.Ratings[i].Value;
+      }
 
-    let imdbRating = "";
-    let rtRating = "";
-    for (let i = 0; i < data.Ratings.length; i++) {
-      if (data.Ratings[i].Source === 'Internet Movie Database')
-        imdbRating = data.Ratings[i].Value;
-      if (data.Ratings[i].Source === 'Rotten Tomatoes')
-        rtRating = data.Ratings[i].Value;
+      output = "\n\nmovie-this '" + movie + "'\n" +
+      "  Title           : " + data.Title + '\n' +
+      "  Year            : " + data.Year + '\n' +
+      "  IMDB Rating     : " + imdbRating + '\n' +
+      "  Rotten Tomatoes : " + rtRating + '\n' +
+      "  Country         : " + data.Country + '\n' +
+      "  Language        : " + data.Language + '\n' +
+      "  Plot            : " + data.Plot + '\n' +
+      "  Actors          : " + data.Actors + '\n\n';
     }
-
-    let output = "\n\nmovie-this '" + movie + "'\n" +
-    "  Title           : " + data.Title + '\n' +
-    "  Year            : " + data.Year + '\n' +
-    "  IMDB Rating     : " + imdbRating + '\n' +
-    "  Rotten Tomatoes : " + rtRating + '\n' +
-    "  Country         : " + data.Country + '\n' +
-    "  Language        : " + data.Language + '\n' +
-    "  Plot            : " + data.Plot + '\n' +
-    "  Actors          : " + data.Actors + '\n\n';
 
     this.output(output);
   };
